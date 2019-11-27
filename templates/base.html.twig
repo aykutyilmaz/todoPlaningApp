@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    <h2>Todo Planing</h2>
+    <ul class="todo" style="display: inline-block;">
+        {% for developer in developers %}
+            <li class="developers" style="float: left; margin: 62px;">
+                {{ developer.Name }}
+                <p>Difficulty : {{ developer.difficulty }}</p>
+                <p>Total Task Time : {{ developer.totalTaskTime }}</p>
+                <ul class="tasks">
+                    {% for task in developer.tasks %}
+                        <li>
+                            {{ task.name }}
+                            <ul>
+                                <li>Level : {{ task.level }}</li>
+                                <li>Duration : {{ task.duration }}</li>
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        <h3>Backlogs</h3>
+        <ul >
+            {% for task in backlogs %}
+                <li>
+                    {{ task.name }}
+                    <ul>
+                        <li>Level : {{ task.level }}</li>
+                        <li>Duration : {{ task.duration }}</li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    </body>
+</html>
